@@ -31,6 +31,11 @@ Then type:
 <code>-n</code> stands for the number of threads for OpenMP parallelisation, only with parallel job_type.  
 
 Now automatically a directory <code>OUTDIR16</code> is created with all needed <code>.nml</code> files containing general parameters like the number of simulation years <code>nyears</code> in <code>control.nml</code> or the number of ocean layers <code>nlayers</code> in <code>ocn_par.nml</code>.
+
+Go to the directory by typing:
+
+    cd OUTDIR16
+    
 Also the executable <code>climber.x</code> is copied here as well as directories <code>input</code>, <code>maps</code> and <code>restart</code> containing needed data files. Finally a job script is created called: <code>job.submit</code>. This script does not contain the correct <code>#SBATCH </code>keywords yet. I (Michael Kliphuis) will change the <code>job_climber</code> python script later such that they will be correct. For now please modify the python script yourself by opening it with an editor. Probably the easiest editor to use on Lorenz is **nano**. Also **vi** can be used but it has a steeper learning curve. Simply edit the file by typing:
 
     nano job_climber
