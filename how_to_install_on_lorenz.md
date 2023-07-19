@@ -102,7 +102,7 @@ This takes about 10 minutes but after this an executable <code>climber.x</code> 
 
 You are now ready to do climate runs with climber :) 
 
- [Here](https://github.com/IMAU-oceans/Lorenz/tree/main#login) are guidelines on how to do this.
+[Here](how_to_run_on_lorenz.md) are guidelines on how to do this.
 
 Note that there is also the option to leave out <code>climate_only=1</code> in the make command above. This does a full compilation with extra components but at the moment this gives errors during compilation because files like:
 
