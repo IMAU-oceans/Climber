@@ -1,1 +1,15 @@
-#Installation Climber on Lorenz
+# Installation Climber on Lorenz
+
+You can install climate model Climber on Lorenz by following the next steps:
+
+First log in on Lorenz. Then type:
+
+mkdir models
+cd models
+mkdir climber
+
+Then open a web browser and download the latest version of Climber at: https://zenodo.org/record/7898797
+
+Today (July 19, 2023) the latest version is version 4 with date may 5, 2023  
+
+
