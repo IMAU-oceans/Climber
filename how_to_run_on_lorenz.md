@@ -31,8 +31,59 @@ Then type:
 <code>-n</code> stands for the number of threads for OpenMP parallelisation, only with parallel job_type.  
 
 Now automatically a directory <code>OUTDIR16</code> is created with all needed <code>.nml</code> files containing general parameters like the number of simulation years <code>nyears</code> in <code>control.nml</code> or the number of ocean layers <code>nlayers</code> in <code>ocn_par.nml</code>.
-Also the executable <code>climber.x</code> is copied here as well as directories <code>input</code>, <code>maps</code> and <code>restart</code> containing needed data files. Finally a job script is created called: <code>job.submit</code>. This script does not contain the correct #SBATCH keywords yet. I (Michael Kliphuis) will change the <code>job_climber</code> python script later such that they will be correct. For now please modify the python script yourself with 
+Also the executable <code>climber.x</code> is copied here as well as directories <code>input</code>, <code>maps</code> and <code>restart</code> containing needed data files. Finally a job script is created called: <code>job.submit</code>. This script does not contain the correct <code>#SBATCH </code>keywords yet. I (Michael Kliphuis) will change the <code>job_climber</code> python script later such that they will be correct. For now please modify the python script yourself by opening it with an editor. Probably the easiest editor to use on Lorenz is **nano**. Also **vi** can be used but it has a steeper learning curve. Simply edit the file by typing:
 
+    nano job_climber
+
+or 
+
+    vi job_climber
+
+Then make sure that the script looks like this:
+
+    #!/bin/bash
+  
+    #SBATCH --job-name=climb16
+    #SBATCH --output=./out.out
+    #SBATCH --error=./out.err
+    #SBATCH --time=120:00:00
+    #SBATCH -n 16
+
+    module load cdo
+    module load netCDF/Intel/4.9.2
+    module load mpi/2021.3.0
+    module load compiler/2021.3.0
+   
+    echo "startdate is: "
+    echo `date`
+
+    export GMON_OUT_PREFIX=.//gmon
+    
+    ulimit -s unlimited
+    ulimit -v unlimited
+    ulimit -a
+
+    srun ./climber.x ./
+
+    echo "enddate is: "
+    echo `date`
+
+After this you can start the run on 16 cores by typing:
+
+    sbatch job.submit
+
+To check if your job is running type:
+
+    squeue
+
+If you want to kill the job with e.g. jobid 123456 type:
+
+    scancel 123456
+
+to check more information about the job, for instance where it was submitted from (WorkDir) type:
+
+    scontrol show job 123456   
+    
 
 
  
