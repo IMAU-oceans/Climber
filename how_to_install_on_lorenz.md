@@ -25,7 +25,7 @@ Then copy the zip file directly (via server Gemini) to your directory on Lorenz 
 
 *In your case replace the string kliph103 by your own SolisID*
 
-Then go to the terminal where you were logged in on Lorenz again. Make sure that you are in ~/models/climber and type:
+Then go to the terminal where you were logged in on Lorenz again. Make sure that you are in **~/models/climber** and type:
 
     unzip CLIMBER-X_v1.0rev.zip
 
@@ -35,7 +35,7 @@ Choose not the latest version but the one before that (2.1.2)
 
 From the 'Downloads' directory on your local machine type:
 
-scp  -o ProxyJump=kliph103@gemini.science.uu.nl lis-2.1.2.zip  kliph103@lorenz.science.uu.nl:/nethome/kliph103/models/climber/
+    scp  -o ProxyJump=kliph103@gemini.science.uu.nl lis-2.1.2.zip  kliph103@lorenz.science.uu.nl:/nethome/kliph103/models/climber/
 
 *Again replace the string kliph103 by your own SolisID*
 
@@ -65,6 +65,16 @@ Check if everything went OK by typing:
     make check
 
 This checks if a linear solver works and should end with the line: 1 test passed    
+
+You may get an error message (or similar to):
+
+    locale: Cannot set LC_CTYPE to default locale: No such file or directory   
+
+Fix this by writing on the commandline:
+
+    LANG=en_US.utf8    
+    LC_ALL=en_US.utf8
+    LC_CTYPE=en_US.utf8
 
 Ok now you are ready to build the Climber executable.  Matteo Willeit and Alex Robinson from the Potsdam Institute for Climate Impact (PIK)
 advice to do this with the Intel compiler. We first need a so called Makefile containing all the compiler and library locations and settings.
